@@ -24,7 +24,7 @@ class city(tra_data):
                         R0 = float(self.all_result[key1]['Resistant'][-1:]), T=10, econ = 2)
             
                 subsub_result = city_data._run_SIER('Estimated 2019-nCoV Outbreak in Hubei',
-                    'Hubei Population', 'Days from 2020.1.1 to 2020.1.25', death_rate = 0.04,show_Sus = False)
+                    'Hubei Population', 'Days from 2020.1.1 to 2020.1.25', death_rate = 0.04,show = False)
                 #self.all_result[key] = subsub_result
             
                 #人口转移

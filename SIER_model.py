@@ -66,26 +66,8 @@ class SIER:
         self.modelRun = True
         return self.results
 
-    def plot(self, title, ylabel, xlabel):
-        if self.modelRun == False:
-            print('Error: Model has not run. Please call SIR.run()')
-            return
-        print("Maximum infected case: ",
-              format(int(max(self.results['Infected']))))
-        fig, ax = plt.subplots(figsize=(10,6))
-        plt.plot(self.results['Time'], self.results['Susceptible'], color='blue')
-        plt.plot(self.results['Time'], self.results['Infected'], color='red')
-        plt.plot(self.results['Time'], self.results['Exposed'], color='orange')
-        plt.plot(self.results['Time'], self.results['Resistant'], color='palegreen')
-        plt.plot(self.results['Time'], self.results['Heal'], color='green')
-        plt.plot(self.results['Time'], self.results['Death'], color='grey')
-        plt.xlabel(xlabel)
-        plt.ylabel(ylabel)
-        plt.legend(['Susceptible','Infected','Exposed','Removed', 'Heal', 'Death'], prop={'size': 12}, bbox_to_anchor=(0.5, 1.02), ncol=6, fancybox=True, shadow=True)
-        plt.title(title, fontsize = 20)
-        plt.show()
         
-    def plot_noSuscep(self, title, ylabel, xlabel):
+    def plot_show(self, title, ylabel, xlabel):
         if self.modelRun == False:
             print('Error: Model has not run. Please call SIR.run()')
             return

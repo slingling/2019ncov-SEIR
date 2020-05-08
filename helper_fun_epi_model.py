@@ -79,7 +79,7 @@ class Estimate_Wuhan_Outbreak(Estimate_parameter):
         self.model = None
         
         
-    def _run_SIER(self,title:str, ylabel:str, xlabel:str, death_rate: float, show_Sus = True) -> pandas.core.frame.DataFrame:
+    def _run_SIER(self,title:str, ylabel:str, xlabel:str, death_rate: float, show = True) -> pandas.core.frame.DataFrame:
         """
         Run SIER model
         """
@@ -90,10 +90,8 @@ class Estimate_Wuhan_Outbreak(Estimate_parameter):
                     rateAl = self.alpha)
         result = sier.run(death_rate)
         # Draw plot
-        '''if show_Sus:
-            sier.plot(title, ylabel, xlabel)
-        else:
-            sier.plot_noSuscep(title, ylabel, xlabel)'''
+        if show:
+            sier.plot_show(title, ylabel, xlabel)
         
         self.model = sier
         return result
@@ -135,11 +133,15 @@ class tra_data:
                 line = f.readline()
                 temp = re.findall(r"\d+\.?\d*",line.decode('UTF-8'))[0]
                 lis.append(float(temp)*10000)
+        self.wuhan_in()
         key = [i for i in self.Wuhan_in.keys()]
         Province_n = dict(zip(key,lis))
         Province_n['武汉市'] = float(1100.0)*10000
         
         
         return Province_n
-    
+    if __name__ == '__main__':
+        tra.wuhan_in()
+        tra.wuhan_out()
+        tra.population()
     
